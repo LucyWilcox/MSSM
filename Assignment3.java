@@ -4,7 +4,7 @@ public class Assignment3
 {
 public static void main (String args[])
 	{
-	Scanner sc= new Scanner (System.console().reader());
+	{Scanner sc= new Scanner (System.console().reader());
 	System.out.println("Enter the price:");
 	double price=sc.nextDouble();
 	System.out.println("Enter the amout payed:");
