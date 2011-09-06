@@ -12,17 +12,16 @@ public class Assignment5
 
 		if (choice == 1)
 		{
+			System.out.println("To  press any number but 6 to continue to exit enter end for the radius");
+			int exit=sc.nextInt();
+			
+			while(exit != 6)
+			{
 			System.out.println("Enter the radius:");
 			double radius=sc.nextDouble();
 
 			printCircle(radius);
 
-			System.out.println("To stop press 6");
-			int exit=sc.nextInt();
-			
-			while(exit != 6)
-			{
-				radius=radius+1;
 			}
 				
 			
