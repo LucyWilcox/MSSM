@@ -4,50 +4,55 @@ public class Assignment5
 {
 	public static void main (String args[])
 		{
-		Scanner sc= new Scanner (System.console().reader());
-
-		System.out.println("1 for circle, 2 for triangle, 3 for rectangle");
-
-		int choice=sc.nextInt();
-
-		if (choice == 1)
-		{
-			System.out.println("To  press any number but 6 to continue to exit enter end for the radius");  //I know this is not a vaild way to acctually exit because it just errors out but I can't figure out how to get it to exit, I will come in Tuesday
-			int exit=sc.nextInt();
-			
-			while(exit != 6)
+			boolean exit = false;
+			while (exit == false)
 			{
-			System.out.println("Enter the radius:");
-			double radius=sc.nextDouble();
+				Scanner sc= new Scanner (System.console().reader());
 
-			printCircle(radius);
+				System.out.println("1 for circle, 2 for triangle, 3 for rectangle, 4 to exit");
 
-			}
-				
+				int choice=sc.nextInt();
+
+							
 			
-		}
-		else if (choice == 2)  //I'm going to hold off on finishing the triangle and rectange parts until I get the circle one down
-		{
-			System.out.println("Enter the base of  the triangle:");
-			double base=sc.nextDouble();
 
-			System.out.println("Enter the height of the triangle:");
-			double height=sc.nextDouble();
-
-			printTriangle(base, height);
-		}
-		else
-		{
-			System.out.println("Enter the length of the rectangle:");
-			double length=sc.nextDouble();
-
-			System.out.println("Enter the width of the rectangle");
-			double width=sc.nextDouble();
-
-			printRectangle(length, width);
-		}
-		
+				if (choice == 1)
+				{
+					System.out.println("Enter the radius:");
+					double radius=sc.nextDouble();
 	
+					printCircle(radius);
+				}
+				else if (choice == 2) 
+				{
+					System.out.println("Enter the base of  the triangle:");
+					double base=sc.nextDouble();
+
+					System.out.println("Enter the height of the triangle:");
+					double height=sc.nextDouble();
+
+					printTriangle(base, height);
+				}	
+				else if (choice == 3)
+				{
+					System.out.println("Enter the length of the rectangle:");
+					double length=sc.nextDouble();
+
+					System.out.println("Enter the width of the rectangle");
+					double width=sc.nextDouble();
+
+					printRectangle(length, width);
+				}
+				else if (choice == 4)
+				{
+					exit = true;
+				}
+				
+				else
+				{
+					System.out.println("Please Try Again");
+				}
+			}
 		}
 
 	public static double areaCircle (double radius)
