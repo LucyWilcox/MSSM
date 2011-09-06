@@ -12,7 +12,7 @@ public class Assignment5
 
 		if (choice == 1)
 		{
-			System.out.println("To  press any number but 6 to continue to exit enter end for the radius");
+			System.out.println("To  press any number but 6 to continue to exit enter end for the radius");  //I know this is not a vaild way to acctually exit because it just errors out but I can't figure out how to get it to exit, I will come in Tuesday
 			int exit=sc.nextInt();
 			
 			while(exit != 6)
@@ -26,7 +26,7 @@ public class Assignment5
 				
 			
 		}
-		else if (choice == 2)
+		else if (choice == 2)  //I'm going to hold off on finishing the triangle and rectange parts until I get the circle one down
 		{
 			System.out.println("Enter the base of  the triangle:");
 			double base=sc.nextDouble();
