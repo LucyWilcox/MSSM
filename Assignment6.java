@@ -13,13 +13,20 @@ public class Assignment6
 
 			int row =1;
 			
-
+			for(row=0; row <= last; row++)
+			{
+				System.out.printf("%4d", row);
+			}
+			
+			System.out.println("");
+			
 			for(row=1; row <= last; row++)
 			{
 				System.out.printf("%4d", row);
-
+		
 				for(column=1;column<=last;column++)
 				{
+			
 					System.out.printf("%4d",column*row);			
 				}
 			
