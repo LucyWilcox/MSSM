@@ -6,16 +6,27 @@ public class Assignment6
 		{
 			
 			Scanner sc=new Scanner (System.console().reader());
-			System.out.println("Enter desired range of multipication table");
+			System.out.println("Enter desired range of multiplication table");
 			int last=sc.nextInt();
-
-			for(int first=1; first==last; first++)
-			{
 			
-				System.out.printf("%4d", first);
-				
-		
+			int column=1;
+
+			int row =1;
+			
+
+			for(row=1; row <= last; row++)
+			{
+				System.out.printf("%4d", row);
+
+				for(column=1;column<=last;column++)
+				{
+					System.out.printf("%4d",column*row);			
+				}
+			
+				System.out.println("");
 			}
+			
+			
 		}
 }
 
