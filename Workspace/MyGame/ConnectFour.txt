@@ -1,0 +1,18 @@
+Connect Four
+A 6 by 7 grid which yellow and holes in it, a chip appears above the upper left space which is either red or black depending on the who’s turn it is. The chip is moved by the arrow key and the lower arrow key is used to drop the chip. The color flashes in each empty space on the way down and then stops at the lowest empty space.
+
+Inputs: 
+Choose a color- int
+Move the chip to the correct column- arrow keys
+
+Two Players:
+Could just use the same computer and take turns or we have some two computer system set up we could use that.
+
+Need to be able to test if they have won. In a method on 
+
+Classes could be:
+TableImage- Draws the picture: grid and the circles. The circles are white or a color and the frame is yellow.
+
+PiecesPlayed- Full of arrays with ints 0-empty, 1-red, 2-black.
+
+Player- Controls the movement
