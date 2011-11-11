@@ -5,6 +5,10 @@ import javax.swing.*;
 public class AnimationCanvas extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
 	
 	private static int TIMER_DELAY = 20;
+	Chips c=new Chips();
+	TopChip topchip=new TopChip();
+	
+	int turn=0;
 	
 	public AnimationCanvas() {
 		
@@ -22,9 +26,14 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 	public void redraw(Graphics2D graphics)
 	{
 		TableImage.drawBacking(graphics, getWidth(), getHeight());
-		TableImage.drawSpaces(graphics, getWidth(), getHeight());
-	}
-	
+		TableImage.drawSpaces(graphics, getWidth(), getHeight(), c);
+		topchip.drawTopChip(graphics, getWidth(), getHeight(), Imput.WhichTurn(turn));
+		c.win(c.horizontalwin(), graphics);
+		c.win(c.verticalwin(), graphics);
+		c.win(c.diagonalDownWin(), graphics);
+		c.win(c.diagonalUpWin(), graphics);
+		
+	}	
 
 	public void keyTyped(KeyEvent e) {
 	}
@@ -34,10 +43,14 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 		switch (e.getKeyCode())
 		{
 			case KeyEvent.VK_LEFT:
+				topchip.moveTopChipLeft();
 				break;
 			case KeyEvent.VK_RIGHT:
+				topchip.moveTopChipRight();
 				break;
-			case KeyEvent.VK_UP:
+			case KeyEvent.VK_DOWN:
+				c.AddChip(topchip.column, Imput.WhichTurn(turn));
+				turn++;
 				break;
 			case KeyEvent.VK_SPACE:
 				break;
@@ -51,7 +64,7 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 				break;
 			case KeyEvent.VK_RIGHT:
 				break;
-			case KeyEvent.VK_UP:
+			case KeyEvent.VK_DOWN:
 				break;
 			case KeyEvent.VK_SPACE:
 				break;
@@ -125,6 +138,8 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 	      }
 	    });
 	}
+
+	
  
 }
 
