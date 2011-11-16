@@ -8,6 +8,9 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 	Chips c=new Chips();
 	TopChip topchip=new TopChip();
 	
+	
+	
+	
 	int turn=0;
 	
 	public AnimationCanvas() {
@@ -25,14 +28,18 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 	
 	public void redraw(Graphics2D graphics)
 	{
+		
+	
 		TableImage.drawBacking(graphics, getWidth(), getHeight());
 		TableImage.drawSpaces(graphics, getWidth(), getHeight(), c);
 		topchip.drawTopChip(graphics, getWidth(), getHeight(), Imput.WhichTurn(turn));
-		c.win(c.horizontalwin(), graphics);
-		c.win(c.verticalwin(), graphics);
-		c.win(c.diagonalDownWin(), graphics);
-		c.win(c.diagonalUpWin(), graphics);
-		
+		if(c.gameover!=true){
+			c.diagonalDownWin();
+			c.diagonalDownWin();
+			c.verticalwin();
+			c.horizontalwin();
+		}
+			c.win(graphics);
 	}	
 
 	public void keyTyped(KeyEvent e) {
