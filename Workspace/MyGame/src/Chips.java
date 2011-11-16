@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.font.*;
 import java.awt.Graphics2D;
 
 
@@ -6,6 +8,10 @@ public class Chips{
 
 	Holding[][] cells=new Holding[6][7];
 	
+	
+	Holding winner = Holding.EMPTY;
+	boolean gameover= false;
+			
 	public Chips(){
 		for(int c=0; c<7; c++){
 			for(int r=0;r<6; r++){
@@ -38,7 +44,7 @@ public class Chips{
 		return color;
 	}
 	
-	public Holding horizontalwin(){
+	public void horizontalwin(){
 		for(int r= 0; r<6; r++){
 			int red=0;
 			int black=0;
@@ -61,21 +67,24 @@ public class Chips{
 					}
 					
 					if(black>=4){
-						return Holding.BLACK;
+						winner=Holding.BLACK;
+					
+						
 					}
 					
 					if(red>=4){
-						return Holding.RED;
+						winner=Holding.RED;
+						
 					}
 						
 			}
 			
 		}
-		return Holding.EMPTY;	
+
 
 	}
 	
-	public Holding verticalwin(){
+	public void verticalwin(){
 		for(int c= 0; c<7; c++){
 			int red=0;
 			int black=0;
@@ -98,21 +107,23 @@ public class Chips{
 					}
 					
 					if(black>=4){
-						return Holding.BLACK;
+						winner=Holding.BLACK;
+						
 					}
 					
 					if(red>=4){
-						return Holding.RED;
+						winner=Holding.RED;
+						
 					}
 						
 			}
 			
 		}
-		return Holding.EMPTY;	
+	
 
 	}
 	
-	public Holding diagonalDownWin(){
+	public void diagonalDownWin(){
 		for(int sc= -2; sc<4; sc++){
 			int red=0;
 			int black=0;
@@ -137,11 +148,13 @@ public class Chips{
 					}
 					
 					if(black>=4){
-						return Holding.BLACK;
+						winner=Holding.BLACK;
+			
 					}
 					
 					if(red>=4){
-						return Holding.RED;
+						winner=Holding.RED;
+				
 					}
 					
 					
@@ -150,12 +163,12 @@ public class Chips{
 			}
 			
 		}
-		return Holding.EMPTY;	
+	
 			
 		
 	}
 	
-	public Holding diagonalUpWin(){
+	public void diagonalUpWin(){
 		for(int sc= 3; sc<9; sc++){
 			int red=0;
 			int black=0;
@@ -180,11 +193,13 @@ public class Chips{
 					}
 					
 					if(black>=4){
-						return Holding.BLACK;
+						winner=Holding.BLACK;
+						
 					}
 					
 					if(red>=4){
-						return Holding.RED;
+						winner=Holding.RED;
+						
 					}
 					
 					
@@ -193,20 +208,22 @@ public class Chips{
 			}
 			
 		}
-		return Holding.EMPTY;	
+			
 			
 		
 	}
-	public void win(Holding h, Graphics2D g){
+	public void win(Graphics2D g){
 		
 		g.setColor(Color.blue);
 		
-		switch(h){
+		switch(winner){
 			case RED:
 				g.drawString("Red Wins! Game Over.", 50, 50);
+				gameover=true;
 				break;
 			case BLACK:
 				g.drawString("Black Wins! Game Over", 50, 50);
+				gameover=true;
 				break;
 		}
 	}
