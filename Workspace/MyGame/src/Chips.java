@@ -2,7 +2,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.*;
 import java.awt.Graphics2D;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.file.*;
 
+import javax.swing.text.html.Option;
 
 public class Chips{
 
@@ -212,20 +219,93 @@ public class Chips{
 			
 		
 	}
-	public void win(Graphics2D g){
+	public void win(Graphics2D g, int width, int height){
 		
 		g.setColor(Color.blue);
 		
+		Font font = new Font("Serif", Font.BOLD, 50);
+		g.setFont(font);
 		switch(winner){
 			case RED:
-				g.drawString("Red Wins! Game Over.", 50, 50);
+				g.drawString("Red Wins! Game Over.", (height/2), (width/2));
 				gameover=true;
 				break;
 			case BLACK:
-				g.drawString("Black Wins! Game Over", 50, 50);
+				g.drawString("Black Wins! Game Over", width/2, 50);
 				gameover=true;
 				break;
 		}
 	}
 	
+	
+	public void save(){
+		Path p=Paths.get(System.getProperty("user.dir"), "saved.txt");
+		Charset charset = Charset.forName("US-ASCII");
+		
+		BufferedWriter writer= null;
+		
+		try {
+			writer=Files.newBufferedWriter(p, charset);
+			
+			for(int r= 0; r<6; r++){
+				for(int c=0; c<7; c++){
+					Holding h= cells[r][c];
+					String values= String.valueOf(h);
+					//System.out.print(values);
+					writer.write(values);
+					writer.newLine();
+				}
+			}
+					
+					
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				
+			}
+		}
+		
+		
+				
+				
+			
+		
+	}
+	
+	public void load(){
+		Path p=Paths.get(System.getProperty("user.dir"), "saved.txt");
+		Charset charset = Charset.forName("US-ASCII");
+		
+		BufferedReader reader= null;
+		
+		try {
+			reader=Files.newBufferedReader(p, charset);
+			
+			for(int r= 0; r<6; r++){
+				for(int c=0; c<7; c++){
+					String value= reader.readLine();
+					cells[r][c]=Holding.valueOf(value);
+					
+				}
+			}
+					
+					
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				
+			}
+		}
+		
+	}
 }

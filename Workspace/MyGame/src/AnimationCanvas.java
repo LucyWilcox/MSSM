@@ -39,7 +39,7 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 			c.verticalwin();
 			c.horizontalwin();
 		}
-			c.win(graphics);
+			c.win(graphics, getWidth(), getHeight());
 	}	
 
 	public void keyTyped(KeyEvent e) {
@@ -60,6 +60,12 @@ public class AnimationCanvas extends JPanel implements MouseListener, MouseMotio
 				turn++;
 				break;
 			case KeyEvent.VK_SPACE:
+				break;
+			case KeyEvent.VK_S:
+				c.save();
+				break;
+			case KeyEvent.VK_L:
+				c.load();
 				break;
 		}
 	}
